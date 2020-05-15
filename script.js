@@ -6,6 +6,9 @@ let value3 = document.getElementById('value3')
 
 let inpSpeed = document.getElementById('inpSpeed')
 
+let stop_slot_machine = document.getElementById('stop_slot_machine')
+
+
 let values = [
     '😃', '😇', '😋', '😂', '😎', '😭', '😡'
 ]
@@ -33,4 +36,20 @@ inpSpeed.onchange = function (ev) {
     document.documentElement.style.setProperty('--speed', ev.target.value)
 
     updateAnimation(ev.target.value)
+}
+stop_slot_machine.onclick=()=>{
+    if (animationId) clearInterval(animationId)
+
+    document.documentElement.style.setProperty('--speed', 0)
+    
+    setTimeout(()=>{
+        if( (value1.innerText ==value2.innerText) && (value2.innerText ==value3.innerText) && (value1.innerText ==value3.innerText))
+        {
+            alert("You Won  Great Luck !!!");
+        }
+        else{
+            alert("Sorry You Lost This Time!!!");
+        }
+    },1000)
+    
 }
